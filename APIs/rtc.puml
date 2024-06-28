@@ -1,0 +1,111 @@
+@startuml
+skinparam rectangle {
+    BackgroundColor<<DS1307>> Wheat
+    BorderColor Black
+    FontName Courier
+}
+
+class "DS1307_Init" as Init <<DS1307>> {
+}
+class "DS1307_SetClockHalt" as SetHalt <<DS1307>> {
+}
+class "DS1307_GetClockHalt" as GetHalt <<DS1307>> {
+}
+class "DS1307_SetRegByte" as SetRegByte <<DS1307>> {
+}
+class "DS1307_GetRegByte" as GetRegByte <<DS1307>> {
+}
+class "DS1307_SetEnableSquareWave" as SetSquareWave <<DS1307>> {
+}
+class "DS1307_SetInterruptRate" as SetInterruptRate <<DS1307>> {
+}
+class "DS1307_SetDayOfWeek" as SetDOW <<DS1307>> {
+}
+class "DS1307_SetDate" as SetDate <<DS1307>> {
+}
+class "DS1307_SetMonth" as SetMonth <<DS1307>> {
+}
+class "DS1307_SetYear" as SetYear <<DS1307>> {
+}
+class "DS1307_SetHour" as SetHour <<DS1307>> {
+}
+class "DS1307_SetMinute" as SetMinute <<DS1307>> {
+}
+class "DS1307_SetSecond" as SetSecond <<DS1307>> {
+}
+class "DS1307_SetTimeZone" as SetTimeZone <<DS1307>> {
+}
+class "DS1307_GetDayOfWeek" as GetDOW <<DS1307>> {
+}
+class "DS1307_GetDate" as GetDate <<DS1307>> {
+}
+class "DS1307_GetMonth" as GetMonth <<DS1307>> {
+}
+class "DS1307_GetYear" as GetYear <<DS1307>> {
+}
+class "DS1307_GetHour" as GetHour <<DS1307>> {
+}
+class "DS1307_GetMinute" as GetMinute <<DS1307>> {
+}
+class "DS1307_GetSecond" as GetSecond <<DS1307>> {
+}
+class "DS1307_GetTimeZoneHour" as GetTimeZoneHour <<DS1307>> {
+}
+class "DS1307_GetTimeZoneMin" as GetTimeZoneMin <<DS1307>> {
+}
+
+Init --> SetHalt
+SetHalt --> SetRegByte
+SetHalt --> GetRegByte
+GetHalt --> GetRegByte
+SetSquareWave --> SetRegByte
+SetSquareWave --> GetRegByte
+SetInterruptRate --> SetRegByte
+SetInterruptRate --> GetRegByte
+SetDOW --> SetRegByte
+SetDate --> SetRegByte
+SetMonth --> SetRegByte
+SetYear --> SetRegByte
+SetHour --> SetRegByte
+SetMinute --> SetRegByte
+SetSecond --> SetRegByte
+SetTimeZone --> SetRegByte
+GetDOW --> GetRegByte
+GetDate --> GetRegByte
+GetMonth --> GetRegByte
+GetYear --> GetRegByte
+GetHour --> GetRegByte
+GetMinute --> GetRegByte
+GetSecond --> GetRegByte
+GetTimeZoneHour --> GetRegByte
+GetTimeZoneMin --> GetRegByte
+
+@enduml
+@startuml
+skinparam rectangle {
+    BackgroundColor<<DS1307>> Wheat
+    BorderColor Black
+}
+
+class "DS1307_Init" as Init <<DS1307>> {
+    +hi2c : I2C_HandleTypeDef*
+}
+class "DS1307_SetClockHalt" as SetHalt <<DS1307>> {
+    +halt : uint8_t
+}
+class "DS1307_GetClockHalt" as GetHalt <<DS1307>> {
+}
+class "DS1307_SetRegByte" as SetRegByte <<DS1307>> {
+    +regAddr : uint8_t
+    +val : uint8_t
+}
+class "DS1307_GetRegByte" as GetRegByte <<DS1307>> {
+    +regAddr : uint8_t
+}
+
+Init --> SetHalt : calls
+SetHalt --> SetRegByte : calls
+SetHalt --> GetRegByte : calls
+GetHalt --> GetRegByte : calls
+
+@enduml
